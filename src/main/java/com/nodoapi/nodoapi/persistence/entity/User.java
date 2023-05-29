@@ -2,11 +2,8 @@ package com.nodoapi.nodoapi.persistence.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.LifecycleState;
+
 
 import java.util.List;
 
