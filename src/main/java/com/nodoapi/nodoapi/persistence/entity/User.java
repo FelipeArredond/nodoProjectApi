@@ -24,10 +24,10 @@ public class User {
     private Integer age;
     private String email;
     private String password;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "id_rol", insertable = false, updatable = false)
     private Rol rol;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "id_sub", insertable = false, updatable = false)
     private Sub sub;
     @OneToMany(mappedBy = "user")

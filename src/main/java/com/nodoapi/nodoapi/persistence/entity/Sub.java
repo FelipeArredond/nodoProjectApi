@@ -18,9 +18,9 @@ public class Sub {
     private LocalDateTime startDate;
     @Column(name = "end_date")
     private LocalDateTime endDate;
-    @OneToMany(mappedBy = "sub", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "sub")
     @JsonIgnore
-    private List<User> user;
+    private User user;
     private String type;
     public Long getIdSub() {
         return idSub;
@@ -43,6 +43,12 @@ public class Sub {
     public LocalDateTime getEndDate() {
         return endDate;
     }
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
     public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
@@ -53,11 +59,4 @@ public class Sub {
         this.type = type;
     }
 
-    public List<User> getUser() {
-        return user;
-    }
-
-    public void setUser(List<User> user) {
-        this.user = user;
-    }
 }

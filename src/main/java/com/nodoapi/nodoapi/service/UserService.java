@@ -1,6 +1,7 @@
 package com.nodoapi.nodoapi.service;
 
 import com.nodoapi.nodoapi.persistence.entity.User;
+import com.nodoapi.nodoapi.persistence.repository.CommentRepository;
 import com.nodoapi.nodoapi.persistence.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,11 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final CommentRepository commentRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, CommentRepository commentRepository) {
         this.userRepository = userRepository;
+        this.commentRepository = commentRepository;
     }
 
     public List<User> getAll(){
@@ -28,7 +31,7 @@ public class UserService {
     }
     public boolean deleteById(Long id){
         return userRepository.findById(id).map(user -> {
-            userRepository.deleteUserById(id);
+            userRepository.deleteById(id);
             return true;
         }).orElse(false);
     }

@@ -18,6 +18,6 @@ public class RolService {
         return rolRepository.save(rol);
     }
     public List<Rol> getAll(){
-        return rolRepository.findAll();
+        return (List<Rol>) rolRepository.findAll();
     }
 }

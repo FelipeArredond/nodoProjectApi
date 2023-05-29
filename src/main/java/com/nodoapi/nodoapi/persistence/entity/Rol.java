@@ -30,17 +30,15 @@ public class Rol {
     public void setName(String name) {
         this.name = name;
     }
+    @OneToOne(mappedBy = "rol")
+    @JsonIgnore
+    private User users;
 
-    public List<User> getUsers() {
+    public User getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(User users) {
         this.users = users;
     }
-
-    @OneToMany(mappedBy = "rol")
-    @JsonIgnore
-    private List<User> users;
-
 }
