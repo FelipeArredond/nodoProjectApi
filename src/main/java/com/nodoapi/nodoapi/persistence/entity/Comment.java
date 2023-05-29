@@ -14,7 +14,7 @@ public class Comment {
     private LocalDateTime date;
     @Column(name = "id_person")
     private Long idPerson;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "id_person", insertable = false, updatable = false)
     private User user;
 
