@@ -24,6 +24,9 @@ public class AuthenticationService {
     }
 
     public AutheticationResponse register(RegisterRequest registerRequest) {
+        if(userRepository.findByEmail(registerRequest.getEmail()).isPresent()){
+            return AutheticationResponse.builder().token("").message("The user already exist in database").status(0).build();
+        }
         var user = User.builder()
                 .age(registerRequest.getAge())
                 .name(registerRequest.getName())
@@ -34,7 +37,7 @@ public class AuthenticationService {
                 .build();
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
-        return AutheticationResponse.builder().token(jwtToken).build();
+        return AutheticationResponse.builder().token(jwtToken).message("User created succesfully").status(1).build();
     }
 
     public AutheticationResponse authenticate(AuthenticationRequest authenticationRequest) {
