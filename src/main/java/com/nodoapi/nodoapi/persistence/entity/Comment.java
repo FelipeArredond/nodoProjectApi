@@ -17,6 +17,9 @@ public class Comment {
     @ManyToOne()
     @JoinColumn(name = "id_person", insertable = false, updatable = false)
     private User user;
+    @ManyToOne()
+    @JoinColumn(name = "id_class", insertable = false, updatable = false)
+    private ClassObject classObject;
 
     public Long getIdComment() {
         return idComment;
