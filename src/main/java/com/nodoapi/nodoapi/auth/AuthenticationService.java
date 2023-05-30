@@ -1,27 +1,35 @@
 package com.nodoapi.nodoapi.auth;
 
 import com.nodoapi.nodoapi.config.JwtService;
+import com.nodoapi.nodoapi.persistence.entity.Rol;
 import com.nodoapi.nodoapi.persistence.entity.User;
 import com.nodoapi.nodoapi.persistence.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class AuthenticationService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
+    public AuthenticationService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
+        this.authenticationManager = authenticationManager;
+    }
+
     public AutheticationResponse register(RegisterRequest registerRequest) {
-        User user = User.builder()
+        var user = User.builder()
                 .age(registerRequest.getAge())
                 .name(registerRequest.getName())
-                .idRol(registerRequest.getIdRole())
+                .idRol(registerRequest.getIdRol())
+                .email(registerRequest.getEmail())
+                .idSub(registerRequest.getIdSub())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .build();
         userRepository.save(user);
@@ -29,7 +37,7 @@ public class AuthenticationService {
         return AutheticationResponse.builder().token(jwtToken).build();
     }
 
-    public AutheticationResponse autheticate(AuthenticationRequest authenticationRequest) {
+    public AutheticationResponse authenticate(AuthenticationRequest authenticationRequest) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                     authenticationRequest.getEmail(),

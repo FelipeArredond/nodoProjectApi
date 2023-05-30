@@ -25,6 +25,8 @@ public class User implements UserDetails {
     private Long idPerson;
     @Column(name = "id_rol")
     private Long idRol;
+    @Column(name = "id_sub")
+    private Long idSub;
     private String name;
     private Integer age;
     private String email;
