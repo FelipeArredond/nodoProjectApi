@@ -1,5 +1,6 @@
 package com.nodoapi.nodoapi.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,5 +19,6 @@ public class School {
     private Long idSchool;
     private String name;
     @OneToOne(mappedBy = "school")
+    @JsonIgnore
     private Course course;
 }
