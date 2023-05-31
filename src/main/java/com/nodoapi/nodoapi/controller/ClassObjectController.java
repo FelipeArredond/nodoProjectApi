@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/class")
+@CrossOrigin(origins = "*")
 @Slf4j
 public class ClassObjectController {
     private final ClassObjectService classObjectService;

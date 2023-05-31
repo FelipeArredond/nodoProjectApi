@@ -23,9 +23,9 @@ public class AuthenticationService {
         this.authenticationManager = authenticationManager;
     }
 
-    public AutheticationResponse register(RegisterRequest registerRequest) {
+    public RegisterResponse register(RegisterRequest registerRequest) {
         if(userRepository.findByEmail(registerRequest.getEmail()).isPresent()){
-            return AutheticationResponse.builder().token("").message("The user already exist in database").status(0).build();
+            return RegisterResponse.builder().message("The user already exist in database").status(0).build();
         }
         var user = User.builder()
                 .age(registerRequest.getAge())
@@ -37,7 +37,7 @@ public class AuthenticationService {
                 .build();
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
-        return AutheticationResponse.builder().token(jwtToken).message("User created succesfully").status(1).build();
+        return RegisterResponse.builder().message("User created succesfully").status(1).build();
     }
 
     public AutheticationResponse authenticate(AuthenticationRequest authenticationRequest) {
@@ -50,6 +50,6 @@ public class AuthenticationService {
         var user = userRepository.findByEmail(authenticationRequest.getEmail())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
-        return AutheticationResponse.builder().token(jwtToken).build();
+        return AutheticationResponse.builder().token(jwtToken).age(user.getAge()).message("Found").status(1).name(user.getName()).email(user.getEmail()).rol(user.getRol().getName()).build();
     }
 }

@@ -19,10 +19,15 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_course")
     private Long idCourse;
+    @Column(name = "id_school")
+    private Long idSchool;
     private String name;
     private String description;
     private String duration;
     @OneToMany(mappedBy = "course")
     @JsonIgnore
     private List<ClassObject> classes;
+    @OneToOne
+    @JoinColumn(name = "id_school", insertable = false, updatable = false)
+    private School school;
 }

@@ -11,11 +11,9 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    private final CommentRepository commentRepository;
 
-    public UserService(UserRepository userRepository, CommentRepository commentRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.commentRepository = commentRepository;
     }
 
     public List<User> getAll(){
