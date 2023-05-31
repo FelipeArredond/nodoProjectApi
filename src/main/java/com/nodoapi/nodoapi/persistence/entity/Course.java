@@ -22,6 +22,7 @@ public class Course {
     @Column(name = "id_school")
     private Long idSchool;
     private String name;
+    private String image;
     private String description;
     private String duration;
     @OneToMany(mappedBy = "course")

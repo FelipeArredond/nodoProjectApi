@@ -4,10 +4,7 @@ import com.nodoapi.nodoapi.persistence.entity.School;
 import com.nodoapi.nodoapi.service.SchoolService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,10 @@ public class SchoolController {
     @GetMapping("")
     public ResponseEntity<List<School>> getAll(){
         return new ResponseEntity<>(schoolService.getAll(), HttpStatus.OK);
+    }
+
+    @PostMapping("")
+    public ResponseEntity<School> save(@RequestBody School school){
+        return new ResponseEntity<>(schoolService.save(school), HttpStatus.CREATED);
     }
 }
