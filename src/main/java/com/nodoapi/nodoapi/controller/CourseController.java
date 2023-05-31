@@ -30,6 +30,11 @@ public class CourseController {
         }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/school/{id}")
+    public ResponseEntity<List<Course>> getBySchool(@PathVariable("id") Long id){
+        return new ResponseEntity<>(courseService.getBySchool(id), HttpStatus.OK);
+    }
+
     @PostMapping("")
     public ResponseEntity<Course> save(@RequestBody Course course){
         return new ResponseEntity<>(courseService.save(course), HttpStatus.CREATED);

@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -18,7 +20,7 @@ public class School {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSchool;
     private String name;
-    @OneToOne(mappedBy = "school")
+    @OneToMany(mappedBy = "school")
     @JsonIgnore
-    private Course course;
+    private List<Course> course;
 }

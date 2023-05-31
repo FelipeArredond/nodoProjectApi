@@ -27,7 +27,7 @@ public class Course {
     @OneToMany(mappedBy = "course")
     @JsonIgnore
     private List<ClassObject> classes;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_school", insertable = false, updatable = false)
     private School school;
 }

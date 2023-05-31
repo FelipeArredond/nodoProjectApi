@@ -33,4 +33,8 @@ public class CourseService {
             return true;
         }).orElse(false);
     }
+
+    public List<Course> getBySchool(Long id) {
+        return courseRepository.findAllByIdSchool(id);
+    }
 }
