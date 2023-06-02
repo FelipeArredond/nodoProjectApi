@@ -25,8 +25,6 @@ public class User implements UserDetails {
     private Long idPerson;
     @Column(name = "id_rol")
     private Long idRol;
-    @Column(name = "id_sub")
-    private Long idSub;
     private String name;
     private Integer age;
     private String email;
@@ -34,9 +32,9 @@ public class User implements UserDetails {
     @OneToOne
     @JoinColumn(name = "id_rol", insertable = false, updatable = false)
     private Rol rol;
-    @OneToOne
-    @JoinColumn(name = "id_sub", insertable = false, updatable = false)
-    private Sub sub;
+    @OneToOne(mappedBy = "user")
+    @JsonIgnore
+    private SubDetail subDetail;
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Comment> comments;

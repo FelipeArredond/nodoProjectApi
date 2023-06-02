@@ -32,7 +32,6 @@ public class AuthenticationService {
                 .name(registerRequest.getName())
                 .idRol(registerRequest.getIdRol())
                 .email(registerRequest.getEmail())
-                .idSub(registerRequest.getIdSub())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .build();
         userRepository.save(user);
@@ -50,6 +49,6 @@ public class AuthenticationService {
         var user = userRepository.findByEmail(authenticationRequest.getEmail())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
-        return AutheticationResponse.builder().token(jwtToken).age(user.getAge()).message("Found").status(1).name(user.getName()).email(user.getEmail()).rol(user.getRol().getName()).build();
+        return AutheticationResponse.builder().idPerson(user.getIdPerson()).token(jwtToken).age(user.getAge()).message("Found").status(1).name(user.getName()).email(user.getEmail()).rol(user.getRol().getName()).build();
     }
 }

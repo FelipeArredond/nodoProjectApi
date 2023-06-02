@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AutheticationResponse {
+    private Long idPerson;
     private String token;
     private String message;
     private Integer status;

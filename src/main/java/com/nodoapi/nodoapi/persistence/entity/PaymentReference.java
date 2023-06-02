@@ -1,11 +1,11 @@
 package com.nodoapi.nodoapi.persistence.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDateTime;
 
@@ -14,15 +14,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "sub")
-public class Sub {
+@Table(name = "payments_reference")
+@CrossOrigin("*")
+public class PaymentReference {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_sub")
-    private Long idSub;
-    private String state;
-    @OneToOne(mappedBy = "sub")
-    @JsonIgnore
-    private SubDetail subDetail;
-    private String type;
+    @Column(name = "id_payment_reference")
+    private Long idPaymentReference;
+    private LocalDateTime date;
+
 }

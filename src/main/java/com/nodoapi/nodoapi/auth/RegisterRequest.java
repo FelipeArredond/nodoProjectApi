@@ -15,5 +15,4 @@ public class RegisterRequest {
     private String password;
     private Integer age;
     private Long idRol;
-    private Long idSub;
 }
