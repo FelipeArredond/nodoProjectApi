@@ -34,9 +34,9 @@ public class AuthenticationService {
                 .email(registerRequest.getEmail())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .build();
-        userRepository.save(user);
+        var userCreated = userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
-        return RegisterResponse.builder().message("User created succesfully").status(1).build();
+        return RegisterResponse.builder().message("User created succesfully").status(1).idPerson(userCreated.getIdPerson()).build();
     }
 
     public AutheticationResponse authenticate(AuthenticationRequest authenticationRequest) {

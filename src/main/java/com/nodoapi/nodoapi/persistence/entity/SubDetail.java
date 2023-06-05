@@ -32,6 +32,6 @@ public class SubDetail {
     @JoinColumn(name = "id_person", insertable = false, updatable = false)
     private User user;
     @OneToOne
-    @JoinColumn(name = "id_sub_detail", insertable = false, updatable = false)
+    @JoinColumn(name = "id_sub", insertable = false, updatable = false)
     private Sub sub;
 }

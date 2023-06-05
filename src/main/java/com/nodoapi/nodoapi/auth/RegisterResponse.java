@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class RegisterResponse {
     private String message;
     private Integer status;
+    private Long idPerson;
 }
