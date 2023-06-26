@@ -4,6 +4,7 @@ import com.nodoapi.nodoapi.persistence.entity.User;
 import com.nodoapi.nodoapi.persistence.repository.CommentRepository;
 import com.nodoapi.nodoapi.persistence.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 import java.util.Optional;
