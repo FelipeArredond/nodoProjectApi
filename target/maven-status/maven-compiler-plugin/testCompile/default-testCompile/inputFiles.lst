@@ -1,1 +1,3 @@
 /home/felipe/Documents/dev/nodo/backend/nodo-api/src/test/java/com/nodoapi/nodoapi/NodoApiApplicationTests.java
+/home/felipe/Documents/dev/nodo/backend/nodo-api/src/test/java/com/nodoapi/nodoapi/persistence/repository/UserRepositoryTest.java
+/home/felipe/Documents/dev/nodo/backend/nodo-api/src/test/java/com/nodoapi/nodoapi/service/UserServiceTest.java
