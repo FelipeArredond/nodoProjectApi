@@ -2,7 +2,6 @@ package com.nodoapi.nodoapi.persistence.repository;
 
 import com.nodoapi.nodoapi.persistence.entity.Course;
 import com.nodoapi.nodoapi.persistence.entity.School;
-import org.junit.After;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 class CourseRepositoryTest {
@@ -31,7 +29,7 @@ class CourseRepositoryTest {
     void canFindAllByIdSchool(){
         // given
         Long id = 1L;
-        List<Course> testList = new ArrayList<Course>();
+        List<Course> testList = new ArrayList<>();
         this.schoolRepository.save(School.builder().idSchool(1L).name("Test").build());
         Course itemToAdd1 = Course.builder().name("Test").idSchool(1L).build();
         Course itemToAdd2 = Course.builder().name("Test").idSchool(1L).build();
