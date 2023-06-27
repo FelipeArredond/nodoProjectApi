@@ -25,6 +25,6 @@ public class RolController {
 
     @PostMapping("/addRol")
     public ResponseEntity<Rol> saveRol(@RequestBody Rol rol){
-        return new ResponseEntity<>(rol, HttpStatus.CREATED);
+        return new ResponseEntity<>(rolService.save(rol), HttpStatus.CREATED);
     }
 }
